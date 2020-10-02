@@ -1,0 +1,47 @@
+// Fast method
+int gcd(int X, int Y){
+    int r;
+    
+    int dividend=X>Y?X:Y;
+    int divisor=X>Y?Y:X;
+    while(divisor!=0){
+        int rem=dividend%divisor;
+        dividend=divisor;
+        divisor=rem;
+    }
+    return dividend;
+    }
+int Solution::cpFact(int A, int B) {
+    while(gcd(A,B)!=1){
+        A=A/gcd(A,B);
+    }
+    return A;
+}
+
+
+
+// Slow method
+int gcd(int X, int Y){
+    int r;
+    
+    int dividend=X>Y?X:Y;
+    int divisor=X>Y?Y:X;
+    while(divisor!=0){
+        int rem=dividend%divisor;
+        dividend=divisor;
+        divisor=rem;
+    }
+    return dividend;
+    }
+int Solution::cpFact(int A, int B) {
+    if(gcd(A,B)==1){
+        return A;
+    }
+    for(int i=(A/2)+1; i>=1; i--)
+    {
+        if(A%i==0 && gcd(i,B)==1){
+            return i;
+        }
+    }
+}
+
